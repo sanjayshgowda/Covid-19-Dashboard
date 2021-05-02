@@ -878,7 +878,7 @@ fig_statewise.update_layout(
         ),
         paper_bgcolor=colors['background'],
         plot_bgcolor=colors['background'],
-        margin=dict(l=0, r=0, t=0, b=30),
+        margin=dict(l=0, r=0, t=10, b=30),
         height=400)
 
 
@@ -989,7 +989,7 @@ fig_urban_rural_beds.update_layout(
         ),
         paper_bgcolor=colors['background'],
         plot_bgcolor=colors['background'], 
-        margin=dict(l=0, r=0, t=5),
+        margin=dict(l=0, r=0, t=10),
         height=400
     )
 
@@ -2146,7 +2146,7 @@ app.layout = html.Div(
                 dcc.RadioItems(
                     id='graph-line',
                     options=[{'label': i, 'value': i}
-                             for i in ['Line Chart', 'Bar Chart']],
+                             for i in ['Bar Chart', 'Line Chart']],
                     value='Line Chart',
                     labelStyle={'display': 'inline-block'},
                     style={
@@ -2419,7 +2419,7 @@ app.layout = html.Div(
                 ], className='six columns'
                 ),
             html.Div([
-                    html.Img(src='data:image/png;base64,{}'.format(Prophet_Confirmed.decode())),
+                    html.Img(src='data:image/png;base64,{}'.format(Arima_Active.decode())),
                 ], className='six columns'
                 ),
         ], className='row'
@@ -2427,14 +2427,13 @@ app.layout = html.Div(
 
         html.Div([
             html.Br(),
-
             html.Div([
-                    html.Img(src='data:image/png;base64,{}'.format(Arima_Active.decode())),
-                ], className='six columns'
+                    html.Img(src='data:image/png;base64,{}'.format(Prophet_Confirmed.decode())),
+                ], className='twelve columns'
                 ),
             html.Div([
                     html.Img(src='data:image/png;base64,{}'.format(Prophet_Active.decode())),
-                ], className='six columns'
+                ], className='twelve columns'
                 ),
         ], className='row'
         ),
@@ -2447,9 +2446,10 @@ app.layout = html.Div(
                 ], className='six columns'
                 ),
             html.Div([
-                    html.Img(src='data:image/png;base64,{}'.format(Prophet_Deaceased.decode())),
+                    html.Img(src='data:image/png;base64,{}'.format(Arima_Recoverd.decode())),
                 ], className='six columns'
                 ),
+            
         ], className='row'
         ),
 
@@ -2457,12 +2457,12 @@ app.layout = html.Div(
             html.Br(),
 
             html.Div([
-                    html.Img(src='data:image/png;base64,{}'.format(Arima_Recoverd.decode())),
-                ], className='six columns'
+                    html.Img(src='data:image/png;base64,{}'.format(Prophet_Deaceased.decode())),
+                ], className='twelve columns'
                 ),
             html.Div([
                     html.Img(src='data:image/png;base64,{}'.format(Prophet_Recoverd.decode())),
-                ], className='six columns'
+                ], className='twelve columns'
                 ),
         ], className='row'
         ),
@@ -2479,16 +2479,14 @@ app.layout = html.Div(
             ),
             html.Div([
                     html.Img(src='data:image/png;base64,{}'.format(Arima_Vacc.decode())),
-                ], className='six columns'
+                ], className='twelve columns'
                 ),
             html.Div([
                     html.Img(src='data:image/png;base64,{}'.format(Prophet_Vacc.decode())),
-                ], className='six columns'
+                ], className='twelve columns'
                 ),
         ], className='row'
         ),
-
-
     ],
     className='ten columns offset-by-one'
     ),
