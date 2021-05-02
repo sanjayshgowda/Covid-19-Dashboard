@@ -1267,6 +1267,7 @@ fig_vacc_total_dose = px.choropleth(
     hover_name='State',
     hover_data = ['First Dose Administered', 'Second Dose Administered','Male(Individuals Vaccinated)','Female(Individuals Vaccinated)','Transgender(Individuals Vaccinated)'],
     animation_frame="date",
+    title = "Vaccination Gender Distrubution",
     color='Total Doses Administered',
     color_continuous_scale='oranges'
 )
@@ -1305,8 +1306,9 @@ fig_vacc_reg = px.choropleth(
     featureidkey='properties.ST_NM',
     locations='State',
     hover_name='State',
-    hover_data = ['Total Individuals Registered','Total Individuals Vaccinated'],
+    hover_data = ['18-30 years(Age)','30-45 years(Age)','45-60 years(Age)','60+ years(Age)', 'Total Individuals Vaccinated'],
     animation_frame="date",
+    title = "Age Wise Covid Vaccination",
     color='Total Doses Administered',
     color_continuous_scale='oranges'
 )
@@ -1535,12 +1537,8 @@ fig_log_three.update_layout(
         margin=dict(l=0, r=0),
         height=500,
     )
-vaccine_by_doses=india_vaccine_data[['date','State','Total Individuals Registered','Total Individuals Vaccinated','Total Doses Administered']]
-fig_log_four = go.Figure(go.Line(x = vaccine_by_doses['date'], 
-                            y = (vaccine_by_doses['Total Individuals Registered']),
-                            name = 'Total Individuals Registered', 
-                            mode = 'lines'))
-fig_log_four.add_trace(go.Line(x = vaccine_by_doses['date'],
+vaccine_by_doses=india_vaccine_data[['date','State','Total Individuals Vaccinated','Total Doses Administered']]
+fig_log_four = go.Figure(go.Line(x = vaccine_by_doses['date'],
                           y = (vaccine_by_doses['Total Individuals Vaccinated']), 
                           name = 'Total Individuals Vaccinated', 
                           mode = 'lines'))
@@ -2466,6 +2464,7 @@ app.layout = html.Div(
                 ),
         ], className='row'
         ),
+        
 
         html.Div([
             html.Br(),
@@ -2481,10 +2480,17 @@ app.layout = html.Div(
                     html.Img(src='data:image/png;base64,{}'.format(Arima_Vacc.decode())),
                 ], className='twelve columns'
                 ),
+            
+        ], className='row'
+        ),
+        html.Div([
+            html.Br(),
             html.Div([
                     html.Img(src='data:image/png;base64,{}'.format(Prophet_Vacc.decode())),
                 ], className='twelve columns'
                 ),
+            html.Br(),
+            html.Br(),
         ], className='row'
         ),
     ],
