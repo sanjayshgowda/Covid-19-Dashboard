@@ -271,8 +271,7 @@ def high_cases(countryname,total,single,color_word='#63b6ff',confirmed_total=1,d
     if deaths:
 
         percent = (total/confirmed_total)*100
-        return html.P([ html.Span(countryname + ' | ' + f"{int(total):,d}",
-                             style={'backgroundColor': colors['highest_case_bg'], 'borderRadius': '6px',}),
+        return html.P([ html.Span(countryname + ' | ' + f"{int(total):,d}",style={'backgroundColor': colors['highest_case_bg'], 'borderRadius': '6px',}),
                     html.Span(' +' + f"{int(single):,d}",
                              style={'color': color_word,'margin':2,'fontWeight': 'bold','fontSize': 14,}),
                     html.Span(f' ({percent:.2f}%)',
